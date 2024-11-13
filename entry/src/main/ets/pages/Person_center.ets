@@ -1,4 +1,5 @@
 import { PersonComponent, PersonData } from './Data/PersonComponent'
+import { router } from '@kit.ArkUI'
 
 @Component
 export default struct MyPage {
@@ -10,7 +11,7 @@ export default struct MyPage {
         //头像及用户名
         Column({ space: 15 }) {
           Image($r('app.media.Touxiang'))
-            .margin({top:10})
+            .margin({ top: 10 })
             .width(70)
             .borderRadius(35)
           Text(this.userName)
@@ -20,7 +21,7 @@ export default struct MyPage {
         .height('18%')
         .margin({ top: 20, bottom: 10 })
 
-        //功能
+        //我的界面功能
         Column() {
           ForEach(PersonData.PersonCard, (personcard: PersonComponent) => {
             Row() {
