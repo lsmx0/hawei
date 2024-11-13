@@ -17,8 +17,10 @@ export default struct MyPage {
         Text(this.userName)
           .fontWeight(600)
       }
-      .width('100%')
-      .height(100)
+      .width('90%')
+      .height(120)
+      .backgroundColor('#00CEF9')
+      .borderRadius(10)
       .margin({ top: 20, bottom: 30 })
 
       //我的界面功能
