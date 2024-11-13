@@ -1,8 +1,21 @@
 import { router } from '@kit.ArkUI';
+import { http } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Httptool } from './tools/Httptool';
+
+interface User {
+  Name: string
+  Password: string
+}
 
 @Entry
 @Component
 struct LogIn {
+  @State user: User = {
+    Name: '',
+    Password: ''
+  }
+
   build() {
     Column({ space: 30 }) {
       //大LOGO
@@ -13,10 +26,10 @@ struct LogIn {
 
       //登录实现
       Column({ space: 10 }) {
-        TextInput({ placeholder: '请输入用户名/手机号' })
+        TextInput({ placeholder: '请输入用户名/手机号', text: $$this.user.Name })
           .width('85%')
           .margin({ top: 10 })
-        TextInput({ placeholder: '请输入密码' })
+        TextInput({ placeholder: '请输入密码', text: $$this.user.Password })
           .width('85%')
           .type(InputType.Password)
         Row() {
@@ -36,6 +49,7 @@ struct LogIn {
           .margin({ bottom: 10 })
           .backgroundColor('#00CEF9')
           .onClick(() => {
+            this.Login()
             router.pushUrl({
               url: 'pages/main'
             })
@@ -58,7 +72,7 @@ struct LogIn {
         .justifyContent(FlexAlign.SpaceAround)
         .backgroundColor('#00CEF9')
         .borderRadius(20)
-        .onClick(()=>{
+        .onClick(() => {
           // TODO:跳转QQ
 
         })
@@ -73,7 +87,7 @@ struct LogIn {
         .justifyContent(FlexAlign.SpaceAround)
         .backgroundColor('#00CEF9')
         .borderRadius(20)
-        .onClick(()=>{
+        .onClick(() => {
           // TODO:跳转微信
 
         })
@@ -88,7 +102,7 @@ struct LogIn {
         .justifyContent(FlexAlign.SpaceAround)
         .backgroundColor('#00CEF9')
         .borderRadius(20)
-        .onClick(()=>{
+        .onClick(() => {
           //TODO：跳转Git
         })
       }
@@ -102,4 +116,14 @@ struct LogIn {
       height: '100%'
     })
   }
+
+  //登陆请求
+  Login() {
+    Httptool.post("", this.user, (data: http.HttpResponse) => {
+      console.info('Message:' + data.result['msg']);
+      console.info('Operate:' + data.result['operate']);
+      console.info('Nickname:' + data.result['nickname']);
+    })
+  }
 }
+
