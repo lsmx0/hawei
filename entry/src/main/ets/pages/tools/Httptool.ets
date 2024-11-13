@@ -11,7 +11,10 @@ export class Httptool {
     let options: http.HttpRequestOptions = {
       method: http.RequestMethod.GET, // 可选，默认为http.RequestMethod.GET
       expectDataType: http.HttpDataType.OBJECT, // 可选，指定返回数据的类型
-      header: { 'Accept': 'application/json' },
+      header: { 'Accept': 'application/json',
+        'X-Auth-Token':globalThis.token
+      },
+
     }
     httpRequest.request(url, options, (err: BusinessError, data: http.HttpResponse) => {
       if (!err) {
