@@ -1,5 +1,5 @@
 import { PersonComponent, PersonData } from './Data/PersonComponent'
-import { router } from '@kit.ArkUI'
+
 
 @Component
 export default struct MyPage {
@@ -7,45 +7,53 @@ export default struct MyPage {
 
   build() {
     Column() {
-      ColumnSplit() {
-        //头像及用户名
-        Column({ space: 15 }) {
-          Image($r('app.media.Touxiang'))
-            .margin({ top: 10 })
-            .width(70)
-            .borderRadius(35)
-          Text(this.userName)
-            .fontWeight(600)
-        }
-        .width('100%')
-        .height('18%')
-        .margin({ top: 20, bottom: 10 })
 
-        //我的界面功能
-        Column() {
-          ForEach(PersonData.PersonCard, (personcard: PersonComponent) => {
-            Row() {
-              Image(personcard.icon)
-                .width(40)
-                .fillColor('#00CEF9')
-              Text(personcard.text)
-                .fontWeight(600)
-                .fontColor('#00CEF9')
-              Text('')
-            }
-            .width('100%')
-            .height(100)
-            .borderRadius(15)
-            .justifyContent(FlexAlign.SpaceAround)
-            .backgroundColor(Color.White)
-
-          })
-        }
-        .width('100%')
-        .height('82%')
-        .justifyContent(FlexAlign.SpaceAround)
+      //头像及用户名
+      Column({ space: 15 }) {
+        Image($r('app.media.Touxiang'))
+          .margin({ top: 10 })
+          .width(70)
+          .borderRadius(35)
+        Text(this.userName)
+          .fontWeight(600)
       }
-      .borderWidth(1)
+      .width('100%')
+      .height(100)
+      .margin({ top: 20, bottom: 30 })
+
+      //我的界面功能
+      Scroll() {
+        Column() {
+          Grid() {
+            ForEach(PersonData.PersonCard, (personcard: PersonComponent) => {
+              GridItem() {
+                Row() {
+                  Image(personcard.icon)
+                    .width(40)
+                    .fillColor('#00CEF9')
+                  Text(personcard.text)
+                    .fontWeight(600)
+                    .fontColor('#00CEF9')
+                  Text('')
+                }
+                .width('100%')
+                .height(100)
+                .borderRadius(12)
+                .justifyContent(FlexAlign.SpaceAround)
+                .backgroundColor(Color.White)
+              }
+            })
+          }
+          .width('95%')
+          .height(600)
+          .rowsGap(15)
+          .rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr')
+        }
+
+      }
+      .width('100%')
+      .height(550)
+      .scrollBar(BarState.Off)
     }
     .width('100%')
     .height('100%')

@@ -6,7 +6,6 @@ import HomePage from './Home_Page'
 struct main {
   //底部导航栏高亮显示自定义
   @State secondIndex: number = 0
-
   @Builder
   TabsStyle(itemIndex: number, title: string, icon: Resource) {
     Column() {
