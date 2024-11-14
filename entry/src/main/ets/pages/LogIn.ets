@@ -9,8 +9,8 @@ interface User {
 @Component
 struct LogIn {
   @State user: User = {
-    Name: 'lsmx',
-    Password: 'Mkb050320'
+    Name: '',
+    Password: ''
   }
 
   build() {
@@ -36,6 +36,11 @@ struct LogIn {
           Text('快速注册')
             .fontSize(12)
             .fontColor('#00CEF9')
+            .onClick(()=>{
+              router.pushUrl({
+                url:'pages/SignUp'
+              })
+            })
         }
         .width('80%')
         .margin({ top: 10, bottom: 10 })

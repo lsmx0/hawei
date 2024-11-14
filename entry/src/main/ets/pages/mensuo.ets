@@ -1,5 +1,5 @@
 import { router } from '@kit.ArkUI'
-import { mensuoText, msg } from '../Data/mensuoText'
+import { mensuoText, msg } from './Data/mensuoText'
 
 @Entry
 @Component
