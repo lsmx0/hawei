@@ -1,8 +1,4 @@
 import { router } from '@kit.ArkUI';
-import { http } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { Httptool } from './tools/Httptool';
-import { Hw_user } from '../modal/Hw_user';
 
 interface User {
   Name: string
@@ -50,7 +46,7 @@ struct LogIn {
           .margin({ bottom: 10 })
           .backgroundColor('#00CEF9')
           .onClick(() => {
-            this.login_iot()
+            console.log('username:', this.user.Name, 'password:', this.user.Password)
             router.pushUrl({
               url: 'pages/main'
             })
@@ -117,26 +113,4 @@ struct LogIn {
       height: '100%'
     })
   }
-
-  //登陆请求
-  Login() {
-    Httptool.post("", this.user, (data: http.HttpResponse) => {
-      console.info('Message:' + data.result['msg']);
-      console.info('Operate:' + data.result['operate']);
-      console.info('Nickname:' + data.result['nickname']);
-    })
-  }
-
-  //登陆物联网
-  login_iot(){
-    let url:string='https://iam.myhuaweicloud.com/v3/auth/tokens'
-    let hw_user=new Hw_user(this.user.Name,this.user.Password,'lsmx_0')
-    Httptool.post(url,hw_user,(data: http.HttpResponse) => {
-     console.info('Result:',JSON.stringify(data.result));
-      console.info('Header:',JSON.stringify(data.header));
-      console.info('x-subject-token:',JSON.stringify(data.header['x-subject-token']).substring(0,50));
-   globalThis.token=data.header['x-subject-token']
-    })
-  }
 }
-
