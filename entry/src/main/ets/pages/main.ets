@@ -1,5 +1,6 @@
 import MyPage from './Person_center'
 import HomePage from './Home_Page'
+import { router } from '@kit.ArkUI'
 
 @Entry
 @Component

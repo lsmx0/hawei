@@ -12,9 +12,7 @@ struct Mensuo {
           .width(25)
           .fillColor(Color.White)
           .onClick(() => {
-            router.pushUrl({
-              url: 'pages/main'
-            })
+           router.back()
           })
         Text('门锁')
           .fontWeight(700)
