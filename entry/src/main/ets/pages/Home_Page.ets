@@ -51,6 +51,7 @@ export struct HomePage {
         .rowsGap(10)
         .columnsGap(10)
       }
+      .scrollBar(BarState.Off)
       .width('100%')
       .height(1000)
     }

@@ -1,4 +1,6 @@
 import { router } from '@kit.ArkUI';
+import { Httptool } from '../tools/Httptool';
+import { http } from '@kit.NetworkKit';
 
 interface User {
   Name: string
@@ -9,8 +11,8 @@ interface User {
 @Component
 struct LogIn {
   @State user: User = {
-    Name: '',
-    Password: ''
+    Name: 'lsmx',
+    Password: 'Mkb050320'
   }
 
   build() {
@@ -36,9 +38,9 @@ struct LogIn {
           Text('快速注册')
             .fontSize(12)
             .fontColor('#00CEF9')
-            .onClick(()=>{
+            .onClick(() => {
               router.pushUrl({
-                url:'pages/SignUp'
+                url: 'pages/SignUp'
               })
             })
         }
@@ -118,4 +120,15 @@ struct LogIn {
       height: '100%'
     })
   }
+  //登陆请求
+  Login() {
+    Httptool.post("", this.user, (data: http.HttpResponse) => {
+      console.info('Message:' + data.result['msg']);
+      console.info('Operate:' + data.result['operate']);
+      console.info('Nickname:' + data.result['nickname']);
+    })
+  }
 }
+
+
+

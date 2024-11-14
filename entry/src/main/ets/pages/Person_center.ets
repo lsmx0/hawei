@@ -4,13 +4,14 @@ import { PersonComponent, PersonData } from './Data/PersonComponent'
 @Component
 export default struct MyPage {
   @State userName: string = '林水蒙夕'
+  @State icon: Resource = $r('app.media.Touxiang')
 
   build() {
     Column() {
 
       //头像及用户名
       Column({ space: 15 }) {
-        Image($r('app.media.Touxiang'))
+        Image(this.icon)
           .margin({ top: 10 })
           .width(70)
           .borderRadius(35)
@@ -19,7 +20,7 @@ export default struct MyPage {
       }
       .width('95%')
       .height(120)
-      .backgroundColor('#ffd6cccc')
+      .backgroundColor(Color.White)
       .borderRadius(10)
       .margin({ top: 20, bottom: 30 })
 
@@ -43,7 +44,7 @@ export default struct MyPage {
                 .height(100)
                 .borderRadius(12)
                 .justifyContent(FlexAlign.SpaceAround)
-                .backgroundColor('#ffd6cccc')
+                .backgroundColor(Color.White)
               }
             })
           }
