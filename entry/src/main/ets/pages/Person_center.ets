@@ -17,9 +17,9 @@ export default struct MyPage {
         Text(this.userName)
           .fontWeight(600)
       }
-      .width('90%')
+      .width('95%')
       .height(120)
-      .backgroundColor('#00CEF9')
+      .backgroundColor('#ffd6cccc')
       .borderRadius(10)
       .margin({ top: 20, bottom: 30 })
 
@@ -34,6 +34,7 @@ export default struct MyPage {
                     .width(40)
                     .fillColor('#00CEF9')
                   Text(personcard.text)
+                    .fontSize(20)
                     .fontWeight(600)
                     .fontColor('#00CEF9')
                   Text('')
@@ -42,13 +43,13 @@ export default struct MyPage {
                 .height(100)
                 .borderRadius(12)
                 .justifyContent(FlexAlign.SpaceAround)
-                .backgroundColor(Color.White)
+                .backgroundColor('#ffd6cccc')
               }
             })
           }
           .width('95%')
-          .height(600)
-          .rowsGap(15)
+          .height(700)
+          .rowsGap(5)
           .rowsTemplate('1fr 1fr 1fr 1fr 1fr 1fr')
         }
 

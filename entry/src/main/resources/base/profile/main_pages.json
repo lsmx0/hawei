@@ -6,6 +6,7 @@
     "pages/routingData/DeviceSharing",
     "pages/routingData/Widget",
     "pages/routingData/HelpCenter",
-    "pages/routingData/MoreSettings"
+    "pages/routingData/MoreSettings",
+    "pages/routingData/mensuo"
   ]
 }
